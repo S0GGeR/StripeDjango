@@ -4,3 +4,5 @@ Dockerfile.prod
 .idea/
 entrypoint.prod.sh
 db_sqlite3
+.env.prod
+.env.prod.db
