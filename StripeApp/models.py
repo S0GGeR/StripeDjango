@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
@@ -5,12 +6,11 @@ class Item(models.Model):
     """Класс модели товара"""
     name = models.CharField("Название", max_length=100)
     description = models.TextField("Описание", max_length=1000)
-    price = models.IntegerField("Цена")
-    currency = models.CharField("Валюта", max_length=4, default='USD')
+    price = models.IntegerField("Цена", validators=[MinValueValidator(51)])
 
     class Meta:
-        verbose_name = "Объект"
-        verbose_name_plural = "Объекты"
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
 
     def __str__(self):
         return "{}".format(self.name)
@@ -19,7 +19,7 @@ class Item(models.Model):
 class Tax(models.Model):
     """Класс модели налога"""
     name = models.CharField("Название", max_length=100)
-    percent = models.FloatField("Процент")
+    percent = models.FloatField("Процент", validators=[MaxValueValidator(100)])
     description = models.TextField("Описание", max_length=1000)
     stripe_tax_id = models.CharField('Stripe ID', max_length=200, null=True, blank=True)
 
@@ -58,7 +58,7 @@ class Discount(models.Model):
         blank=True
     )
     name = models.CharField("Название", max_length=100)
-    percent = models.FloatField("Процент")
+    percent = models.FloatField("Процент", validators=[MaxValueValidator(100)])
     max_redemptions = models.IntegerField("Количество использований", default=1)
 
     class Meta:

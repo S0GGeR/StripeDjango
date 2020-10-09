@@ -57,7 +57,7 @@ def buy_order_view(request, pk):
 
             },
             'quantity': 1,
-            # 'tax_rates': taxes,
+            'tax_rates': taxes,
         })
     stripe.api_key = settings.STRIPE_SECRET_KEY
     session = stripe.checkout.Session.create(

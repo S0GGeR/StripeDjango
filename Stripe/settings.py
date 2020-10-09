@@ -19,12 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", 'asdasdas24342sdasdasr34exsdasdqw')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get("DEBUG", default=1)))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default='localhost 127.0.0.1').split(" ")
 
 # Application definition
 
@@ -122,7 +122,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # os.environ.get('STRIPE_SECRET_KEY')
 # os.environ.get('STRIPE_PUBLISHABLE_KEY')
-STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
-STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY")
-
-
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY",
+                                   'sk_test_51HZbJ2BMB4LMOznB43MmEwV2dvoAR7qDhWzNsRe0bx1juhmwpoJ5FLNK0X7KmNdXSzaXlIv2Gqz6EbljWAcDOROK00JyUD8MJn')
+STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY",
+                                        'pk_test_51HZbJ2BMB4LMOznB9YxsZszqlyWnZei4WQYcJCYMhSEhAIJuJqAjZsXyPETC09UvsrboV1V8Ld9CE9z7wWhEGYZk00s2DNZm2f')

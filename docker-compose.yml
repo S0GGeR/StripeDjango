@@ -13,11 +13,11 @@ services:
   db:
     image: postgres:12
     volumes:
-      - stripe_postgres_data:/var/lib/postgresql/new_data/
+      - stripedb_postgres_data:/var/lib/postgresql/new_data/
     environment:
       - POSTGRES_USER=stripe_user
       - POSTGRES_PASSWORD=stripe_difficult_password
       - POSTGRES_DB=psql_db
 
 volumes:
-  stripe_postgres_data:
+  stripedb_postgres_data:
