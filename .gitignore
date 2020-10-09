@@ -3,3 +3,4 @@ docker-compose.prod.yml
 Dockerfile.prod
 .idea/
 entrypoint.prod.sh
+db_sqlite3
